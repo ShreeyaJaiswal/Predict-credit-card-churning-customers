@@ -39,8 +39,25 @@ The solution has been built over Python using Pandas and Machine Learning models
 <b>Feature Engineering:-</b>
 - Normalized the numerical features.
 - Encoded the categorical data.
-- 
+- Handled Imbalance data using SMOTE and ensemble technique.
 
 <b>Model Building:-</b>
+- Ensemble Classification models were used, like for bagging RandomForest, and for boosting adaboost, xgboost.
+- XGBClassifier outperformed with an F1 score of 80% and recall of 73%.
+- The next best was RandomForestClassifier with F1 score of 76% and recall of 66%.
+
+- Using SMOTE-NC performed minority oversampling to balance the dataset.
+- Trained the dataset over the ensemble Classification models along with naive bayes and SVM.
+- Here also xgboost and randomforest outperformed.
+
 <b>Best Model Selection:-</b>
+-  After minority oversampling using SMOTE-NC it was evident, the two model which performed well were XGBCLassifier and RandomForest.
+-  RandomForest: False Positive is 99 and False Negative is 107
+-  XGB: False Positive is 67 and False Negative is 168
+-  It can be inferred, XGB False positive is less compared to RandomForest False Positive whereas vice versa for False Negative.
+-   As we want to withold the customers who are likely to churn, so the best model is where the False Positive and False Negative is very less but if either of the two needs to be prioritized, I'll choose False Positive to be less.
+-  Hence, I select XGBClassifier as my model as comparatively it's predicting 32 correct result of customers who are likely to be churn on risk of offering benefit plans to 61 existing customers. This will also increase the likelyhood of those existing 61 customers to be a life long holder of the service offered.
+
 <b>Hypertuning:-</b>
+-  Used RandomizedSearchCV to attain the best combaination of the hyperparameters of XGBClassifier to improve the learning of the model.
+-  On hypertuning the model, I was able to increase the performance from f1 score of 78 to 84%  and overall accuracy to 95%.
